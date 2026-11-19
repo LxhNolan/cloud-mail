@@ -5,7 +5,7 @@ import ja from './ja.js'
 import app from '../hono/hono';
 
 app.use('*', async (c, next) => {
-	const lang = c.req.header('accept-language')?.split('-')[0]
+	const lang = c.req.header('accept-language')?.split('-')[0] || 'en'
 	i18next.init({
 		lng: lang,
 	});
@@ -25,7 +25,7 @@ const resources = {
 };
 
 i18next.init({
-	fallbackLng: 'zh',
+	fallbackLng: 'en',
 	resources,
 });
 
